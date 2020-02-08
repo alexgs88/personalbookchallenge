@@ -1,22 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-
-interface Book {
-  id: number;
-  name: string;
-  points: number;
-  genre_id: number;
-  authors: string[];
-}
-
-const BOOKS: Book[] = [
-  {
-    id: 1,
-    name: "Harry Potter",
-    points: 10,
-    genre_id: 1,
-    authors: ["J. K. Rowling"]
-  }
-];
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { Book } from '../book'
+import { BookService }  from '../book.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: "app-book-list",
@@ -24,9 +11,21 @@ const BOOKS: Book[] = [
   styleUrls: ["./book-list.component.css"]
 })
 export class BookListComponent implements OnInit {
-  books = BOOKS;
+    books$: Observable<Book[]>;
+    selectedId: number;
 
-  constructor() {}
+  constructor(
+     private service: BookService,
+     private route: ActivatedRoute
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+     this.books$ = this.route.paramMap.pipe(
+      switchMap(params => {
+        // (+) before `params.get()` turns the string into a number
+        this.selectedId = +params.get('id');
+        return this.service.getBooks();
+      })
+    );
+  }
 }
