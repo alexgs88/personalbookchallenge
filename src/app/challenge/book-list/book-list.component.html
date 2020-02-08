@@ -10,12 +10,13 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr *ngFor="let book of books;">					
+				<tr *ngFor="let book of books$ | async">					
 					<td>
 						{{ book.name }}
 					</td>
 					<td>{{ book.authors }}</td>
 					<td>{{ book.points }}</td>
+          <td><a [routerLink]="['/hero', hero.id]">Editar</a></td>
 				</tr>
 			</tbody>
 		</table>		
