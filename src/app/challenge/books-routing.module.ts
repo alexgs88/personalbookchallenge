@@ -2,9 +2,11 @@ import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { BookListComponent }    from './book-list/book-list.component';
+import { BookDetailComponent }  from './book-detail/book-detail.component';
 
 const booksRoutes: Routes = [
-  { path: 'books',  component: BookListComponent, data: { animation: 'books' } }
+  { path: 'books',  component: BookListComponent, data: { animation: 'books' } },
+  { path: 'books/:id', component: BookDetailComponent, data: { animation: 'book' } }
 ];
 
 @NgModule({

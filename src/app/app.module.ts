@@ -5,8 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ChallengeComponent } from './challenge/challenge/challenge.component';
+import { BookListComponent }   from './challenge/book-list/book-list.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
 import { ChallengeModule } from './challenge/challenge.module';
 
 @NgModule({
@@ -21,7 +21,8 @@ import { ChallengeModule } from './challenge/challenge.module';
   ],
   declarations: [
     AppComponent,    
-    ChallengeComponent
+    ChallengeComponent,
+    BookListComponent
   ],
   bootstrap: [ AppComponent ]
 })
