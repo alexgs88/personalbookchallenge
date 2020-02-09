@@ -5,8 +5,9 @@ import { BookListComponent }    from './book-list/book-list.component';
 import { BookDetailComponent }  from './book-detail/book-detail.component';
 
 const booksRoutes: Routes = [
-  { path: 'books',  component: BookListComponent, data: { animation: 'books' } },
-  { path: 'books/:id', component: BookDetailComponent, data: { animation: 'book' } }
+  { path: 'books',  component: BookListComponent },
+  { path: 'book', redirectTo: 'book/' },
+  { path: 'book/:id', component: BookDetailComponent }
 ];
 
 @NgModule({

@@ -24,6 +24,13 @@ export class BookService {
       map((books: Book[]) => books.find(book => book.id === +id))
     );
   }
+
+  addBook (book: Book): Observable<Book> {
+  return this.http.post<Book>(this.booksUrl, book, httpOptions)
+    .pipe(
+      //catchError(this.handleError('addBook', hero))
+    );
+}
 }
 
 

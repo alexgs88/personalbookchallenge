@@ -1,12 +1,19 @@
-<!-- <div *ngIf="book$ | async as book">
-  <h3>"{{ book.name }}"</h3>
-  <div>
-    <label>Id: </label>{{ book.id }}</div>
-  <div>
-    <label>Nombre: </label>
-    <input [(ngModel)]="book.name" placeholder="name"/>
+<div *ngIf="book$ | async as book">
+	<h3>
+		<span *ngIf="!book.id">Nuevo libro</span>
+		<span *ngIf="book.id">Editar libro</span>
+	</h3>
+	<div *ngIf="book.id">
+		<label>Id: </label>{{ book.id }}
+	</div>
+	<div>
+		<label>Nombre: </label>
+		<input [(ngModel)]="book.name" placeholder="Nombre"/>
   </div>
-  <p>
-    <button (click)="gotoBooks(book)">Volver</button>
-  </p>
-</div> -->
+		<p *ngIf="!book.id">
+			<button (click)="addBook(book)">Añadir</button>
+		</p>
+	</div>
+	<p>
+		<button (click)="gotoBooks(book)">Volver</button>
+	</p>

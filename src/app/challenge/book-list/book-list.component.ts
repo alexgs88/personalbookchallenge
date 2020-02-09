@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Book } from '../book'
 import { BookService }  from '../book.service';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: "app-book-list",
@@ -16,7 +16,8 @@ export class BookListComponent implements OnInit {
 
   constructor(
      private service: BookService,
-     private route: ActivatedRoute
+     private route: ActivatedRoute,
+     private router: Router
   ) {}
 
   ngOnInit() {
@@ -27,5 +28,9 @@ export class BookListComponent implements OnInit {
         return this.service.getBooks();
       })
     );
+  }
+
+  newBook() {  
+    this.router.navigate(['/book']);
   }
 }

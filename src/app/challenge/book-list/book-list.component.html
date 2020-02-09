@@ -16,9 +16,10 @@
 					</td>
 					<td>{{ book.authors }}</td>
 					<td>{{ book.points }}</td>
-          <td><a [routerLink]="['/hero', hero.id]">Editar</a></td>
+          <td><a [routerLink]="['/book', book.id]">Editar</a></td>
 				</tr>
 			</tbody>
-		</table>		
+		</table>	
+    <input type="button" (click)="newBook()" value="Añadir" />
 	</div>
 </div>
